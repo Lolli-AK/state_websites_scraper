@@ -1,0 +1,24 @@
+{
+  "state": "FL",
+  "page_type": "homepage",
+  "requested_url": "https://dos.fl.gov/elections/",
+  "final_url": "https://dos.fl.gov/elections/",
+  "redirect_chain": [
+    "https://dos.fl.gov/elections/"
+  ],
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "render_mode": "plain",
+  "external": false,
+  "fetched_at": "2026-09-01T19:38:40Z",
+  "html_sha256": "4f03a874988a03250653f14b27d48e0d67c90b757088075828722e515188181a",
+  "text_sha256": "b1bb4d3dae4f6312eb5b1d3cb920d9988f7f00c55157f99cac426e347a31a050",
+  "byte_size": 27496,
+  "title": "Division of Elections - Florida Department of State",
+  "noncitizen_voting": {
+    "present": false,
+    "terms": [],
+    "count": 0
+  },
+  "error": null
+}

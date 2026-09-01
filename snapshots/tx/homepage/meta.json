@@ -1,0 +1,24 @@
+{
+  "state": "TX",
+  "page_type": "homepage",
+  "requested_url": "https://www.sos.state.tx.us/elections/index.shtml",
+  "final_url": "https://www.sos.state.tx.us/elections/index.shtml",
+  "redirect_chain": [
+    "https://www.sos.state.tx.us/elections/index.shtml"
+  ],
+  "http_status": 200,
+  "content_type": "text/html",
+  "render_mode": "plain",
+  "external": false,
+  "fetched_at": "2026-09-01T19:38:40Z",
+  "html_sha256": "52566c2cd3c836bcde0df410244074beb83f224deb906927333301514949aa4b",
+  "text_sha256": "f25a5c85e2651c69d011a6866dee18fd7ba4a639cb73eb06e3c09d34bd5a83aa",
+  "byte_size": 20713,
+  "title": "Welcome to Texas Elections",
+  "noncitizen_voting": {
+    "present": false,
+    "terms": [],
+    "count": 0
+  },
+  "error": null
+}

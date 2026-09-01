@@ -1,0 +1,24 @@
+{
+  "state": "TX",
+  "page_type": "elections",
+  "requested_url": "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml",
+  "final_url": "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml",
+  "redirect_chain": [
+    "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml"
+  ],
+  "http_status": 200,
+  "content_type": "text/html",
+  "render_mode": "plain",
+  "external": false,
+  "fetched_at": "2026-09-01T19:38:40Z",
+  "html_sha256": "6ad8e4f405825eaaa1c82f9a3c878878b91e927d779e9b57125a5bbf59babe37",
+  "text_sha256": "e2b8a3315c7f6c1f02c40e36a8161c74ce41fc0738759faa1dda9f26d5faeeca",
+  "byte_size": 35531,
+  "title": "Important Election Dates",
+  "noncitizen_voting": {
+    "present": false,
+    "terms": [],
+    "count": 0
+  },
+  "error": null
+}

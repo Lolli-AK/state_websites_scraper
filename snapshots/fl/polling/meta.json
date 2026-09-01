@@ -1,0 +1,24 @@
+{
+  "state": "FL",
+  "page_type": "polling",
+  "requested_url": "https://dos.fl.gov/elections/for-voters/check-your-voter-status-and-polling-place/",
+  "final_url": "https://dos.fl.gov/elections/for-voters/check-your-voter-status-and-polling-place/",
+  "redirect_chain": [
+    "https://dos.fl.gov/elections/for-voters/check-your-voter-status-and-polling-place/"
+  ],
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "render_mode": "plain",
+  "external": false,
+  "fetched_at": "2026-09-01T19:38:40Z",
+  "html_sha256": "423094293af6edab83df9b32740528255e79a42362e8e8e50e5abeda37d1d8e9",
+  "text_sha256": "4c6daf82ae78f9dcc26d4158829b6afcda1a30d85c5ab7c5e43c22ff1548c52e",
+  "byte_size": 19319,
+  "title": "Voter Information Lookup - Division of Elections - Florida Department of State",
+  "noncitizen_voting": {
+    "present": false,
+    "terms": [],
+    "count": 0
+  },
+  "error": null
+}

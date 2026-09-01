@@ -1,0 +1,24 @@
+{
+  "state": "FL",
+  "page_type": "elections",
+  "requested_url": "https://dos.fl.gov/elections/for-voters/election-dates/",
+  "final_url": "https://dos.fl.gov/elections/for-voters/election-dates/",
+  "redirect_chain": [
+    "https://dos.fl.gov/elections/for-voters/election-dates/"
+  ],
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "render_mode": "plain",
+  "external": false,
+  "fetched_at": "2026-09-01T19:38:40Z",
+  "html_sha256": "335ae6189ddf7b368d7bb30f732949bc048922f149469a45753b9c196840716d",
+  "text_sha256": "dee8b8422d7f6881c50e5befc61f67f3684a4fc65c932220221941adf9a225b7",
+  "byte_size": 24536,
+  "title": "Election Dates - Division of Elections - Florida Department of State",
+  "noncitizen_voting": {
+    "present": false,
+    "terms": [],
+    "count": 0
+  },
+  "error": null
+}

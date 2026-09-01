@@ -1,0 +1,25 @@
+{
+  "_comment": "Runtime knobs for state-watch. Cadence is NOT read by the pipeline; the scheduler (GitHub Actions / cron) owns frequency. The fetch block is kept identical to the county repos so the three pipelines stay diffable against each other, even though a 12-target run never approaches these limits. `workers` applies to plain fetches only - headless renders are always serialized to protect determinism.",
+  "election_window": false,
+  "cadence": {
+    "baseline_cron": "0 8 * * *",
+    "election_window_cron": "0 */3 * * *",
+    "auto_high_cadence_window": {
+      "start": "2026-10-20",
+      "end": "2026-11-17"
+    },
+    "note": "baseline = daily 08:00 UTC; election window = every 3 hours. The auto window matches fl-county-watch: it opens before Florida's mandatory early voting (Oct 24-31) and closes two weeks after election day so the post-election takedown curve is captured. Authoritative values live in .github/workflows/snapshot.yml; these are documentation."
+  },
+  "fetch": {
+    "js_shell_min_chars": 500,
+    "plain_timeout_seconds": 30,
+    "headless_timeout_ms": 45000,
+    "plain_retries": 2,
+    "hydration_settle_ms": 2000,
+    "hydration_max_wait_ms": 6000,
+    "interstitial_max_wait_ms": 45000,
+    "workers": 4,
+    "request_delay_ms": 250,
+    "request_jitter_ms": 250
+  }
+}

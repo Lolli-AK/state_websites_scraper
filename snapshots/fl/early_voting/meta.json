@@ -1,0 +1,25 @@
+{
+  "state": "FL",
+  "page_type": "early_voting",
+  "requested_url": "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
+  "final_url": "https://dos.fl.gov/elections/for-voters/voting/early-voting-and-secure-ballot-intake-stations/",
+  "redirect_chain": [
+    "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
+    "https://dos.fl.gov/elections/for-voters/voting/early-voting-and-secure-ballot-intake-stations/"
+  ],
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "render_mode": "plain",
+  "external": false,
+  "fetched_at": "2026-09-01T19:38:40Z",
+  "html_sha256": "50f61060eb76837a5900ef8ba539a5be10514ed4ca8071be684918b7c964ce31",
+  "text_sha256": "3d7972935ddcf1c6b076ad022fdcf9245e6af4ea3150c17f7f22aea89f2ce34e",
+  "byte_size": 22475,
+  "title": "Early Voting and Secure Ballot Intake Stations - Division of Elections - Florida Department of State",
+  "noncitizen_voting": {
+    "present": false,
+    "terms": [],
+    "count": 0
+  },
+  "error": null
+}
