@@ -17,10 +17,11 @@ inferred from meta.json, so a historical row and a live row are produced by
 the same code path.
 
 History mode is keyed on blob hashes, not paths. An unchanged page keeps the
-same blob across runs, and most pages do not change most days, so the ~44,000
-(commit, page) pairs in the Florida history collapse to a few thousand
-distinct blobs. Scanning per blob and reusing the result is what makes a full
-sweep take seconds instead of an hour.
+same blob across runs, and most pages do not change most days, so the pairs
+collapse to a fraction of their count. Twelve targets do not need that, but
+the county repos it is shared with do -- 46,221 (commit, page) pairs across
+2,745 distinct blobs in Florida -- and keeping one implementation is worth
+more than trimming this one.
 """
 
 from __future__ import annotations
