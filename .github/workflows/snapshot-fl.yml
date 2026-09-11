@@ -1,10 +1,8 @@
 name: snapshot-fl
 
-# Florida state-level scraper. Its Texas sibling is snapshot-tx.yml, and the two
-# are deliberately independent: separate directories, separate manifests,
-# separate cadence windows, separate override variables. The only thing they
-# share is the repository they push to, which is what the concurrency group
-# below is for.
+# Florida state-level scraper, run out of fl/. Its Texas sibling snapshot-tx.yml
+# is independent of it in every respect except the repository they both push to,
+# which is what the concurrency group below is for.
 #
 # Cadence is not hardcoded into the pipeline:
 #   - a DAILY baseline that always runs
@@ -58,20 +56,16 @@ jobs:
 
           # Automatic high-cadence window, UTC, inclusive of both endpoints.
           #
-          # Start: Florida's mandatory early voting for the 2026 general runs
-          # Oct 24 - Oct 31 (the 10th through 3rd day before election day;
-          # counties may extend from the 15th to the 2nd). Opening Oct 20
-          # catches the ramp into it, the same four-day lead fl-county-watch
-          # uses -- so the state series and the county series raise cadence
-          # together.
+          # Florida's mandatory early voting runs Oct 24 - Oct 31 (the 10th
+          # through 3rd day before election day; counties may extend it from the
+          # 15th to the 2nd). Oct 20 gives the same four-day lead into the ramp
+          # that fl-county-watch uses, so the state and county series raise
+          # cadence on the same day.
           #
-          # This is FIVE DAYS LATER than snapshot-tx.yml's Oct 15, because Texas
-          # early voting opens Oct 19. Do not sync those two numbers; they
-          # answer different statutes.
-          #
-          # End: the post-election takedown curve is the point of the exercise and
-          # it lives in the WEEKS AFTER Nov 3. This one DOES match Florida's,
-          # because election day is Nov 3 in both states.
+          # Deliberately not snapshot-tx.yml's Oct 15 -- Texas early voting opens
+          # Oct 19. Different statutes; do not sync them. The Nov 17 end is
+          # shared, because election day is Nov 3 in both states and the tail is
+          # there for the post-election takedown curve.
           WINDOW_START=20261020
           WINDOW_END=20261117
 

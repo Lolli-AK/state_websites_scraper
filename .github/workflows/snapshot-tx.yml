@@ -1,10 +1,8 @@
 name: snapshot-tx
 
-# Texas state-level scraper. Its Florida sibling is snapshot-fl.yml, and the two
-# are deliberately independent: separate directories, separate manifests,
-# separate cadence windows, separate override variables. The only thing they
-# share is the repository they push to, which is what the concurrency group
-# below is for.
+# Texas state-level scraper, run out of tx/. Its Florida sibling snapshot-fl.yml
+# is independent of it in every respect except the repository they both push to,
+# which is what the concurrency group below is for.
 #
 # Cadence is not hardcoded into the pipeline:
 #   - a DAILY baseline that always runs
@@ -58,20 +56,16 @@ jobs:
 
           # Automatic high-cadence window, UTC, inclusive of both endpoints.
           #
-          # Start: Texas early voting by personal appearance for the 2026 general
-          # runs Oct 19 - Oct 30 (Election Code 85.001 puts it on the 17th day
-          # before election day, which is Sat Oct 17, so it slides to the next
-          # business day; it ends on the 4th day before). Opening Oct 15 catches
-          # the ramp into it, the same four-day lead tx-county-watch uses -- so
-          # the state series and the county series raise cadence together.
+          # Texas early voting runs Oct 19 - Oct 30 (Election Code 85.001: the
+          # 17th day before election day is Sat Oct 17, so it slides to the next
+          # business day; it ends on the 4th day before). Oct 15 gives the same
+          # four-day lead into the ramp that tx-county-watch uses, so the state
+          # and county series raise cadence on the same day.
           #
-          # This is FIVE DAYS EARLIER than snapshot-fl.yml's Oct 20, because
-          # Florida's mandatory early voting does not open until Oct 24. Do not
-          # sync those two numbers; they answer different statutes.
-          #
-          # End: the post-election takedown curve is the point of the exercise and
-          # it lives in the WEEKS AFTER Nov 3. This one DOES match Florida's,
-          # because election day is Nov 3 in both states.
+          # Deliberately not snapshot-fl.yml's Oct 20 -- Florida's early voting
+          # opens Oct 24. Different statutes; do not sync them. The Nov 17 end is
+          # shared, because election day is Nov 3 in both states and the tail is
+          # there for the post-election takedown curve.
           WINDOW_START=20261015
           WINDOW_END=20261117
 

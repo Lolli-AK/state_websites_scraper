@@ -491,12 +491,8 @@ def git_commit(fetched_at: str, n_targets: int) -> None:
         return subprocess.run(["git", *args], cwd=ROOT, check=True,
                               capture_output=True, text=True)
 
-    # Scoped to ROOT with an explicit "." pathspec, not a bare `add -A`. This
-    # state's scraper is one directory of a repo that also holds the other
-    # state's, and a bare `git add -A` stages the whole repository regardless of
-    # cwd -- so a Texas run would sweep up any Florida change sitting in the
-    # tree and commit it under a Texas message. `status` is scoped for the same
-    # reason, or the zero-diff check would read the other state's work as ours.
+    # The "." pathspec matters: a bare `add -A` stages the whole repository
+    # whatever the cwd, so this state's run would commit the other state's tree.
     run("add", "-A", ".")
     status = subprocess.run(["git", "status", "--porcelain", "."], cwd=ROOT,
                             capture_output=True, text=True).stdout.strip()

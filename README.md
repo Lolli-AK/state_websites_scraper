@@ -12,28 +12,23 @@ verbatim; the manifest and its column names are the only real difference.
 
 ## One repo, two independent scrapers
 
-`tx/` and `fl/` are self-contained. Each has its own manifest, its own copy of
-the pipeline, its own snapshot tree, its own test suite, and its own workflow
-in `.github/workflows/`. Nothing is shared between them except the repository
-they commit to.
+`tx/` and `fl/` each hold a manifest, a copy of the pipeline, a snapshot tree, a
+test suite and a workflow. They share nothing but the repository they commit to.
 
-That independence is the point: the two states are on different statutory
-calendars, so they raise capture cadence on different days, and neither should
-be able to change the other's behaviour. The cost is real and worth stating —
-**`normalize.py` and `noncitizen.py` exist twice.** A determinism rule or a
-flag fix has to be applied in both copies, and if it is applied to only one the
-two states will drift apart without anything failing. The county repos'
-determinism work transfers precisely because those rules are identical across
-states; keep the two copies byte-identical:
+The two states are on different statutory calendars, so they raise capture
+cadence on different days, and neither should be able to change the other's
+behaviour. What that costs is duplication: **`normalize.py` and `noncitizen.py`
+exist twice**, and a rule fixed in one copy and not the other will drift without
+anything failing. Nothing in the four scripts is state-specific — the state
+comes from the manifest and from which directory the run happens in — so they
+are byte-identical today and should stay that way:
 
 ```bash
 diff -r -x '__pycache__' tx/scripts fl/scripts    # expected: no output
 ```
 
-All four scripts are currently byte-identical between the two directories.
-Nothing in them is state-specific — the state comes from the manifest and from
-which directory the run happens in — so any output from that command is drift,
-not configuration.
+The county repos' determinism rules transfer between states precisely because
+they are identical; output from that command is drift, not configuration.
 
 ## Layout
 
@@ -134,9 +129,10 @@ It is computed from `page.txt`, never from the raw HTML or the live response,
 so it is reproducible for any past commit:
 
 ```bash
-cd tx && python scripts/scan_noncitizen.py            # working tree
-cd tx && python scripts/scan_noncitizen.py --history  # every snapshot commit
-cd tx && python scripts/scan_noncitizen.py --history --csv /tmp/panel.csv
+cd tx        # or: cd fl
+python scripts/scan_noncitizen.py                     # working tree
+python scripts/scan_noncitizen.py --history           # every snapshot commit
+python scripts/scan_noncitizen.py --history --csv /tmp/panel.csv
 ```
 
 **It is a tripwire, and `false` is the expected reading.** 0 of 12 state pages
@@ -150,8 +146,8 @@ On a homepage this flag measures carousel position, not what a county is
 saying. Read a `true` on a rotating page against the item's own publication
 date before treating it as a change.
 
-Three known false negatives, all on Florida county registration pages, are
-worth knowing before trusting a `false`: Miami-Dade names the federal SAVE
+Three known false negatives, all on Florida county registration pages:
+Miami-Dade names the federal SAVE
 verification service but writes "online service (SAVE)", which the
 `save_program` pattern misses because it requires SAVE to be followed by
 program/database/system; and Columbia and Marion both state that a lawful
@@ -172,8 +168,8 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python scripts/snapshot.py --page-type results
 ```
 
-`--state` still exists and still works, but a manifest here holds one state, so
-it has nothing to filter. `snapshot.py` stages with `git add -A .` scoped to
+`--state` still works, but a manifest here holds one state, so it has nothing
+to filter. `snapshot.py` stages with `git add -A .` scoped to
 its own directory, so a Texas run cannot commit Florida's tree.
 
 Determinism is the property everything else rests on: re-running against an
