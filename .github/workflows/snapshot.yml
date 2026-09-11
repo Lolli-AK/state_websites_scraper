@@ -41,7 +41,7 @@ jobs:
     # worst case of every target escalating to a headless render.
     timeout-minutes: 20
     steps:
-      - name: Decide whether this run captures
+      - name: Decide which states this run captures
         id: gate
         env:
           EVENT: ${{ github.event_name }}
@@ -50,32 +50,73 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Automatic high-cadence window, UTC, inclusive of both endpoints.
-          # Kept identical to fl-county-watch so the state and county series can
-          # be read against each other without a cadence caveat. Start: Florida's
-          # mandatory early voting for the 2026 general runs Oct 24-31, and Texas
-          # early voting opens Oct 19, so Oct 20 catches the ramp into both.
-          # End: the post-election takedown curve is the point of the exercise and
-          # it lives in the WEEKS AFTER Nov 3, not on election night.
-          WINDOW_START=20261020
-          WINDOW_END=20261117
+          # Automatic high-cadence windows, UTC, inclusive of both endpoints, and
+          # PER STATE -- because this repo is the only one watching two states at
+          # once, and their early voting periods are set by different statutes:
+          #
+          #   TX  early voting Oct 19 - Oct 30   (Election Code 85.001: the 17th
+          #                                       day before election day is Sat
+          #                                       Oct 17, so it slides to the next
+          #                                       business day; ends the 4th day
+          #                                       before)         -> opens Oct 15
+          #   FL  early voting Oct 24 - Oct 31   (mandatory period, the 10th
+          #                                       through 3rd day before)
+          #                                                       -> opens Oct 20
+          #
+          # Each start is four days before ITS OWN early voting opens, matching
+          # the lead the two county repos use, so the state series and its county
+          # series raise cadence on the same day within a state. A single shared
+          # start cannot do that: the previous value here was Oct 20, which is a
+          # day AFTER Texas early voting opens, so the Texas ramp was missed
+          # entirely while the comment claimed it was covered.
+          #
+          # Both ends are Nov 17. That one IS shared, and correctly so: election
+          # day is Nov 3 in both states and the takedown curve is what the tail
+          # is for.
+          window_fl="20261020 20261117"
+          window_tx="20261015 20261117"
+          ALL_STATES="fl tx"
 
           today=$(date -u +%Y%m%d)
-          go=false
+          open=""
 
           if [ "$EVENT" = "workflow_dispatch" ]; then
-            go=true; why="manual dispatch"
+            open="$ALL_STATES"; why="manual dispatch — all states"
           elif [ "$SCHEDULE" = "0 8 * * *" ]; then
-            go=true; why="daily baseline"
+            open="$ALL_STATES"; why="daily baseline — all states"
           elif [ "${ELECTION_WINDOW:-}" = "true" ]; then
-            go=true; why="ELECTION_WINDOW=true (manual override)"
-          elif [ "$today" -ge "$WINDOW_START" ] && [ "$today" -le "$WINDOW_END" ]; then
-            go=true; why="inside automatic window ${WINDOW_START}..${WINDOW_END}"
+            open="$ALL_STATES"; why="ELECTION_WINDOW=true (manual override) — all states"
           else
-            why="skipped: outside ${WINDOW_START}..${WINDOW_END} and ELECTION_WINDOW is '${ELECTION_WINDOW:-unset}'"
+            for s in $ALL_STATES; do
+              eval "w=\$window_${s}"
+              set -- $w
+              if [ "$today" -ge "$1" ] && [ "$today" -le "$2" ]; then
+                open="${open:+$open }$s"
+              fi
+            done
+            if [ -n "$open" ]; then
+              why="3-hourly cron — inside their own window: $open"
+            else
+              why="skipped: no state is inside its window and ELECTION_WINDOW is '${ELECTION_WINDOW:-unset}'"
+            fi
           fi
 
+          # Pass no --state when every state is captured, so snapshot.py treats it
+          # as a full run and prunes directories no longer in the manifest. A
+          # partial run passes --state and deliberately leaves the other state's
+          # snapshots untouched, which is exactly what its prune guard already
+          # does for a filtered run.
+          args=""
+          if [ -n "$open" ] && [ "$open" != "$ALL_STATES" ]; then
+            for s in $open; do args="$args --state $s"; done
+          fi
+
+          go=false
+          [ -n "$open" ] && go=true
+
           echo "go=$go" >> "$GITHUB_OUTPUT"
+          echo "states=$open" >> "$GITHUB_OUTPUT"
+          echo "args=$args" >> "$GITHUB_OUTPUT"
           echo "capture=$go — $why"
           echo "### snapshot gate: \`$go\`" >> "$GITHUB_STEP_SUMMARY"
           echo "$why" >> "$GITHUB_STEP_SUMMARY"
@@ -100,13 +141,15 @@ jobs:
         run: |
           git config user.name "state-watch[bot]"
           git config user.email "actions@github.com"
-          python scripts/snapshot.py
+          echo "capturing: ${{ steps.gate.outputs.states }}"
+          python scripts/snapshot.py ${{ steps.gate.outputs.args }}
 
-      # If the run died part-way (flaky county, network blip), pick up where it
-      # left off rather than refetching everything.
+      # If the run died part-way (flaky site, network blip), pick up where it
+      # left off rather than refetching everything. Same state filter, or a
+      # resume would pull in states this run was never meant to capture.
       - name: Resume once if the run failed
         if: failure() && steps.gate.outputs.go == 'true'
-        run: python scripts/snapshot.py --resume
+        run: python scripts/snapshot.py --resume ${{ steps.gate.outputs.args }}
 
       - name: Push snapshot commit
         if: steps.gate.outputs.go == 'true'
