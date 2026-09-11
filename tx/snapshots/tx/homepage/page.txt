@@ -1,5 +1,10 @@
 Welcome to Texas Elections
 Skip to Main Content
+Maintenance Notice: SOSDirect and SOSUpload applications will be unavailable Friday, September 11, 5 p.m. to Saturday, September 12, 12 p.m.
+Election Notice:
+Monday, October 5 is the last day to register to vote for the November 3, 2026 Election
+|
+Visit VoteTexas.gov for more election information
 IN-PERSON SERVICES FOR THE OFFICE OF THE TEXAS SECRETARY OF STATE HAVE MOVED TO 400 W. 15TH STREET.
 PARKING DETAILS AND MORE INFORMATION
 Media
@@ -107,7 +112,7 @@ Primary Runoff Election
 Nov 3, 2026
 General Election
 NEW: SOS Modernization Program
-SOSDirect -Business Filings
+SOSDirect - Business Filings
 Business Copies and Certificates
 Uniform Commercial Code
 Texas Businesses Against Trafficking
