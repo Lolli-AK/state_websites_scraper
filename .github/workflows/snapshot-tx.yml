@@ -1,0 +1,136 @@
+name: snapshot-tx
+
+# Texas state-level scraper. Its Florida sibling is snapshot-fl.yml, and the two
+# are deliberately independent: separate directories, separate manifests,
+# separate cadence windows, separate override variables. The only thing they
+# share is the repository they push to, which is what the concurrency group
+# below is for.
+#
+# Cadence is not hardcoded into the pipeline:
+#   - a DAILY baseline that always runs
+#   - an ELECTION-WINDOW cron (every 3h) that only does work when EITHER the
+#     repository variable ELECTION_WINDOW_TX == 'true' (Settings -> Secrets and
+#     variables -> Actions -> Variables) OR today falls inside the automatic
+#     window declared in the gate step below.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 8 * * *"      # daily baseline, 08:00 UTC
+    - cron: "0 */3 * * *"    # election-window cadence, every 3 hours (gated)
+
+# Shared with snapshot-fl.yml ON PURPOSE. Both workflows commit and push to the
+# same branch, so they must never run at once; queueing costs a few minutes and
+# avoids a push race. Florida's crons are offset by 30 minutes so the queue is
+# usually empty anyway.
+concurrency:
+  group: snapshot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    # The frequent cron is admitted to the job and then decided by the gate step,
+    # because an `if:` expression here has no access to the current date.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.schedule == '0 8 * * *' ||
+      github.event.schedule == '0 */3 * * *'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tx
+    # Six targets. The cap is generous against the worst case of every one
+    # escalating to a headless render.
+    timeout-minutes: 20
+    steps:
+      - name: Decide whether this run captures
+        id: gate
+        working-directory: .
+        env:
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          ELECTION_WINDOW: ${{ vars.ELECTION_WINDOW_TX }}
+        run: |
+          set -euo pipefail
+
+          # Automatic high-cadence window, UTC, inclusive of both endpoints.
+          #
+          # Start: Texas early voting by personal appearance for the 2026 general
+          # runs Oct 19 - Oct 30 (Election Code 85.001 puts it on the 17th day
+          # before election day, which is Sat Oct 17, so it slides to the next
+          # business day; it ends on the 4th day before). Opening Oct 15 catches
+          # the ramp into it, the same four-day lead tx-county-watch uses -- so
+          # the state series and the county series raise cadence together.
+          #
+          # This is FIVE DAYS EARLIER than snapshot-fl.yml's Oct 20, because
+          # Florida's mandatory early voting does not open until Oct 24. Do not
+          # sync those two numbers; they answer different statutes.
+          #
+          # End: the post-election takedown curve is the point of the exercise and
+          # it lives in the WEEKS AFTER Nov 3. This one DOES match Florida's,
+          # because election day is Nov 3 in both states.
+          WINDOW_START=20261015
+          WINDOW_END=20261117
+
+          today=$(date -u +%Y%m%d)
+          go=false
+
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            go=true; why="manual dispatch"
+          elif [ "$SCHEDULE" = "0 8 * * *" ]; then
+            go=true; why="daily baseline"
+          elif [ "${ELECTION_WINDOW:-}" = "true" ]; then
+            go=true; why="ELECTION_WINDOW_TX=true (manual override)"
+          elif [ "$today" -ge "$WINDOW_START" ] && [ "$today" -le "$WINDOW_END" ]; then
+            go=true; why="inside automatic window ${WINDOW_START}..${WINDOW_END}"
+          else
+            why="skipped: outside ${WINDOW_START}..${WINDOW_END} and ELECTION_WINDOW_TX is '${ELECTION_WINDOW:-unset}'"
+          fi
+
+          echo "go=$go" >> "$GITHUB_OUTPUT"
+          echo "capture=$go — $why"
+          echo "### snapshot-tx gate: \`$go\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "$why" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.go == 'true'
+        with:
+          # The push step needs the branch, not a detached HEAD.
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.go == 'true'
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Run snapshot (fetch -> normalize -> write -> commit)
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          git config user.name "state-watch-tx[bot]"
+          git config user.email "actions@github.com"
+          python scripts/snapshot.py
+
+      # If the run died part-way (flaky site, network blip), pick up where it
+      # left off rather than refetching everything.
+      - name: Resume once if the run failed
+        if: failure() && steps.gate.outputs.go == 'true'
+        run: python scripts/snapshot.py --resume
+
+      # Rebase before pushing: the concurrency group serializes the two state
+      # workflows, but a run that queued behind its sibling checked out before
+      # the sibling's commit landed.
+      - name: Push snapshot commit
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin HEAD:"${{ github.ref_name }}"
