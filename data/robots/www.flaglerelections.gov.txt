@@ -1,0 +1,12 @@
+User-agent: *
+
+Disallow: /FSE-Share
+Disallow: /Get-Involved/Sandbox/*
+Disallow: /New-page
+Disallow: /New-page-1/*
+Disallow: /Sandbox/*
+Disallow: /Sandbox/Embed-Code-Test/FCE-Custom-Page-Two
+Disallow: /Sandbox/Embed-Code-Test/New-page
+Disallow: /TestingPage
+Disallow: /VR-I-Frames
+Sitemap : https://www.flaglerelections.gov/sitemap.xml

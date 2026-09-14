@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://lovingcountyanddistrictclerk.com/sitemap.xml

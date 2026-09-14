@@ -1,0 +1,18 @@
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Disallow: /Account/
+Disallow: /Shared/
+Disallow: /Admin/
+Disallow: /IVR/
+Disallow: /TaxStatements/
+Disallow: /Property/TaxSales/
+Disallow: /Property/TaxStatement
+Disallow: /Property/DelStatement
+Disallow: /Voter/Certificate
+Disallow: /TaxSales/
+Disallow: /Tax/
+Disallow: /Test
+Disallow: /Test2
+Disallow: /Testing
+Disallow: /Property/HistoryTab

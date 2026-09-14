@@ -1,0 +1,46 @@
+# Revised robots.txt for Travis County (tctx_v4)
+# Optimized to block internal query URLs and allow mobile-friendly assets
+
+User-agent: *
+
+# --- 1. Block Administrative and System Folders ---
+Disallow: /administrator/
+Disallow: /bin/
+Disallow: /cache/
+Disallow: /cli/
+Disallow: /components/
+Disallow: /includes/
+Disallow: /installation/
+Disallow: /language/
+Disallow: /layouts/
+Disallow: /libraries/
+Disallow: /logs/
+Disallow: /tmp/
+
+# --- 2. Fix for "Weird" URLs (Query Strings) ---
+# Blocks Silktide/Google from indexing non-SEF internal Joomla links
+Disallow: /*?option=com_*
+Disallow: /*?view=category*
+Disallow: /*?layout=blog*
+Disallow: /*?id=*
+Disallow: /component/content/
+
+# --- 3. Block Specific Hidden/Dev Paths ---
+Disallow: /style-guide/design/template/option-4
+
+# --- 4. Allow Assets (Crucial for SEO/Mobile-Friendliness) ---
+# We allow bots to see these folders so they can render the site layout correctly
+Allow: /templates/*.css
+Allow: /templates/*.js
+Allow: /templates/*.png
+Allow: /templates/*.jpg
+Allow: /media/*.css
+Allow: /media/*.js
+Allow: /modules/*.css
+Allow: /modules/*.js
+Allow: /images/*.png
+Allow: /images/*.jpg
+Allow: /images/*.jpeg
+
+# --- 5. Sitemaps ---
+Sitemap: https://www.traviscountytx.gov/sitemap.xml
