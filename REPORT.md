@@ -4,8 +4,9 @@
 FL 314 pages/67 counties, state sites 6 pages each). All three repos verified in
 sync with origin.
 **Status:** §3 retracted and rewritten (see §3a). **Four extractor recall
-defects found and fixed 2026-09-11 and 2026-09-14**; every number below is
-post-fix. Remaining known gaps in §7.
+defects found and fixed** 2026-09-11 and 2026-09-14; every number below is
+post-fix. **The staleness claim was hand-validated 2026-09-14 and fell from 27
+to 11** (§5). Remaining known gaps in §7.
 
 ---
 
@@ -172,14 +173,36 @@ cannot.
 
 | | TX | FL |
 |---|---|---|
-| stale (shows only a past election) | 27 county-facts | — |
+| stale (shows only a past election) | **11** county-facts (validated, was 27) | — |
 | conflicts / internally inconsistent | — | 2 |
 | not-named (names a past election, not the general) | — | 11 |
 
-Texas staleness concentrates in election date (19) and registration deadline
-(6). A blank page tells a voter nothing; a stale page tells them something false
-with the county's authority behind it. **These are different harms and the
-literature does not separate them.**
+**All 27 TX "stale" rows were read against their raw page context on
+2026-09-14. Only 11 are real** (`comparative/output/stale_validation.csv`):
+
+| adjudication | n | what it is |
+|---|---|---|
+| genuine stale | **11** | a live block on the page presents a past election as current |
+| archive artifact | **14** | the matched line is a results/records file listing |
+| checker error | 2 | see §7 |
+
+**The 14 archive artifacts are counties doing something RIGHT.** Castro's line
+is "Post Election Hand Count Summary & Certification May 26 Runoff (PDF)";
+Young's is "Public Notice of LAT of Pollbook - 04/08/2026"; Willacy's is a set
+of daily early-voting rosters. Those are statutory election records, correctly
+published and correctly dated. The checker read a filing cabinet as a claim
+about the next election. This is the same defect fixed on the Florida side for
+Hamilton and it is **still live in the Texas checker**.
+
+What survives is a cleaner and smaller claim. The 11 real cases are pages where
+a voter arriving today is actively misinformed — Roberts still says
+"-ELECTION DAY VOTING- FOR PRIMARY ELECTION Tuesday, March 3, 2026";
+Schleicher still runs an "Election Dates" block for the May 26 runoff;
+Childress's "VOTING HOURS AND POLL PLACE INFORMATION" still describes February
+early voting. A blank page tells a voter nothing; these tell them something
+false with the county's authority behind it. **These are different harms and
+the literature does not separate them** -- but the honest magnitude is 11 of
+254 counties, not 27 county-facts.
 
 ## 6. What does NOT hold
 
@@ -229,15 +252,35 @@ states it" found 10 genuine false negatives, all now fixed, with 0 residual for
 the current cycle (§3a). **The headline no longer rests on an unvalidated
 null.**
 
-**Still needs hand-validation before a lab meeting:** the **27 "stale"** rows,
-since staleness is the most novel claim here and nothing has audited it.
+**Defect 5 (open, TX only): results archives read as stale claims.** 14 of the
+27 rows scored "shows only a past election" are matches against a results or
+records file listing -- "Post Election Hand Count Summary ... (PDF)", "Notice of
+Canvassing", "EARLY VOTING ROSTERS", "Public Notice of LAT of Pollbook". Those
+are statutory records, published correctly. The Florida checker was fixed for
+exactly this (Hamilton's 2007 book-closing dates); **Texas has not been.**
+Fixing it moves those 14 from "stale" to "never states it", which lowers the
+staleness count and raises silence by the same amount.
+
+**Defect 6 (open, small): bare-date year resolution can pick a stale year.**
+Panola's "November 3rd Uniform Election" resolved to 2025 from a "Printing
+Friendly Nov Schedule 2025" filename two lines away; Nov 3 2025 was a Monday and
+not an election date, so the county almost certainly means Nov 3 2026 and the
+row should be a match. Measured blast radius: **1 wrong in the 25 verdicts that
+depend on bare-date resolution** -- the other 24 are correct, including 21
+hand-verified recoveries. Tightening the year source to the same line was tested
+and rejected: it costs two verified-correct matches (Angelina, Maverick) to fix
+this one.
+
+**Now validated, and it cut the claim by 60%:** the "stale" rows. All 27 were
+read against raw page context; 11 are genuine, 14 are archive artifacts, 2 are
+checker errors. See §5 and `comparative/output/stale_validation.csv`.
 
 **Numbers safe to use now:** TX counties stating all four (26), stating none
 (75), the four TX correct-rates, the 47-day time series, the backstop
-comparison, and the recall census.
+comparison, the recall census, and the validated staleness count (11).
 
-**Numbers not safe yet:** anything derived from "States something else";
-TX-vs-FL election date; and the staleness counts.
+**Numbers not safe yet:** anything derived from "States something else", and
+TX-vs-FL election date.
 
 ---
 
