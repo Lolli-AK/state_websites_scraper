@@ -1,0 +1,9 @@
+state,level,fact,verdict,matched_text,why,pages_captured
+TX,state,polling_hours,Matches expected,"[polling] ,” which will be populated with voting sites two days prior to Election Day. Many newspapers publish Election ",parsed 7:00-19:00,6
+TX,state,election_date,Matches expected,"[elections] Monday, October 5 is the last day to register to vote for the November 3, 2026 Election","(2026, 11, 3)",6
+TX,state,registration_deadline,Matches expected,[elections] Election Notice:,"(2026, 10, 5)",6
+TX,state,early_voting_window,States something else,"[elections] Friday, August 21, 2026","states [(2026, 8, 21), (2026, 10, 5)], expected (2026, 10, 19)..(2026, 10, 30)",6
+FL,state,poll_hours,not stated,,,6
+FL,state,election_date,matches,2026-08-11 | 2026-10-04 | 2025-08-22 | 2026-07-04 | 2026-07-09 | 2026-07-16 | 2026-08-06 | 2026-08-18 | 2026-09-19 | 2026-09-24 | 2026-10-01 | 2026-10-22 | 2026-11-03 | 2024-08-20,2026-11-03,6
+FL,state,registration_deadline,matches,2026-07-20 | 2026-10-05,2026-10-05,6
+FL,state,early_voting,matches,2026-08-08 | 2026-08-15 | 2026-10-24 | 2026-10-31,2026-10-24; 2026-10-31,6
