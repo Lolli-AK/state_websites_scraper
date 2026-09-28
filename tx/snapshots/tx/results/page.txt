@@ -48,7 +48,7 @@ Forms, Resources and Legal Library
 Voting Systems
 Frequently Asked Questions (FAQS)
 Business Services
-SOSDirect: Business Searches & Formations
+SOSPortal - Business Filings
 Business Forms
 Filing Options
 Fee Schedule
@@ -112,7 +112,7 @@ Constitutional Amendment Elections
 Election and Voter Registration Data
 Cancellation Trend Reports
 NEW: SOS Modernization Program
-SOSDirect - Business Filings
+SOSPortal - Business Filings
 Business Copies and Certificates
 Uniform Commercial Code
 Texas Businesses Against Trafficking

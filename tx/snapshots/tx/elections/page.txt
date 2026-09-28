@@ -48,7 +48,7 @@ Forms, Resources and Legal Library
 Voting Systems
 Frequently Asked Questions (FAQS)
 Business Services
-SOSDirect: Business Searches & Formations
+SOSPortal - Business Filings
 Business Forms
 Filing Options
 Fee Schedule
@@ -265,7 +265,7 @@ Secs. 86.007, 101.001 and 101.057 of the Election Code.
 Section 2051.152 of the Government Code requires all political subdivisions with the authority to impose a tax maintain a publically accessible Internet website and post the date and location of the next election for officers of the political subdivision and the requirements and deadline for filing for candidacy of each elected office of the political subdivision, which shall be continuously posted for at least one year before the election day for the office.
 Please contact the Elections Division of the Office of the Texas Secretary of State at 1-800-252-VOTE (8683) for additional information.
 NEW: SOS Modernization Program
-SOSDirect - Business Filings
+SOSPortal - Business Filings
 Business Copies and Certificates
 Uniform Commercial Code
 Texas Businesses Against Trafficking
