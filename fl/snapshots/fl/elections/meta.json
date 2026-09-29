@@ -6,19 +6,19 @@
   "redirect_chain": [
     "https://dos.fl.gov/elections/for-voters/election-dates/"
   ],
-  "http_status": 200,
-  "content_type": "text/html; charset=utf-8",
-  "render_mode": "plain",
+  "http_status": 403,
+  "content_type": "text/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": false,
-  "fetched_at": "2026-09-28T16:55:00Z",
-  "html_sha256": "335ae6189ddf7b368d7bb30f732949bc048922f149469a45753b9c196840716d",
-  "text_sha256": "dee8b8422d7f6881c50e5befc61f67f3684a4fc65c932220221941adf9a225b7",
-  "byte_size": 24536,
-  "title": "Election Dates - Division of Elections - Florida Department of State",
+  "fetched_at": "2026-09-29T14:58:37Z",
+  "html_sha256": "feb0b0333ffbde6c90858563ea58f8f526a05da3b32ec6f0342d4876486c3116",
+  "text_sha256": "b73d9ad4da7ed31f99c87bb460b3c6c361e7c590ef88d46bd8cbd449636102c0",
+  "byte_size": 2834,
+  "title": "Just a moment...",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }
