@@ -123,8 +123,11 @@ jobs:
       # Rebase before pushing: the concurrency group serializes the two state
       # workflows, but a run that queued behind its sibling checked out before
       # the sibling's commit landed.
+      # Push even after a failed step: a run that hit its deadline has still
+      # committed what it captured. (Without !cancelled() this step was skipped
+      # after any failure, so a successful --resume never reached the remote.)
       - name: Push snapshot commit
-        if: steps.gate.outputs.go == 'true'
+        if: ${{ !cancelled() && steps.gate.outputs.go == 'true' }}
         run: |
           git pull --rebase origin "${{ github.ref_name }}"
           git push origin HEAD:"${{ github.ref_name }}"
