@@ -54,11 +54,10 @@ Frequently Asked Questions
 Government Links
 Media Room
 Para español, seleccione de la lista
-ATTENTION:
-Please refer to Emergency Rule
-1SER26-3
-regarding candidate qualifying. If you have questions, please contact the Bureau of Election Records at 850-245-6280.
+Division of Elections
 RegisterToVoteFlorida.gov
+YourVoteFlorida.com
+Florida Election Watch
 Resources
 Constitutional Amendments/Initiatives
 Frequently Asked Questions
@@ -81,10 +80,7 @@ Vote-by-Mail Ballot Request / Status Lookup
 Voter Information Lookup
 Voter Precinct Lookup
 News/Events
-Qualifying:
-The 2
-nd
-Qualifying Period for 2026 has closed for the following offices: Federal (United States Representative), Governor, Attorney General, Chief Financial Officer, Agriculture Commissioner, State Senator (even numbered districts), and State Representative.
+Qualifying.
 Please visit our
 Candidates and Races
 database for candidate qualifying status.
