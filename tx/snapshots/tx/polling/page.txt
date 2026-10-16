@@ -1,7 +1,7 @@
 Find Your Polling Place in Texas | VoteTexas.gov
 Skip to main content
 Home >
-What’s allowed at the polling place?
+Early Voting and Election Day Polling Locations
 Quick Links
 Voting in Texas
 Where’s my Polling Place?
@@ -22,6 +22,8 @@ to look up your registration information and find your nearest polling location.
 Early Voting Clerk for State and County Elections
 in your county for early voting locations. Also, many newspapers publish early voting polling locations.
 Note: Polling place hours vary at each early voting location
+.
+Note: In-person early voting for the November 3, 2026 Election runs October 19-30
 .
 Election Day Voting Locations
 On Election Day, if your county participates in the
