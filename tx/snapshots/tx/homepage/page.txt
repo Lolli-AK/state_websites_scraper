@@ -1,5 +1,6 @@
 Welcome to Texas Elections
 Skip to Main Content
+SOSPortal will be down for scheduled maintenance on Thursday, October 22, from 8pm to 11pm.
 Election Notice:
 Early voting for the November 3 Election runs Oct. 19-30.
 |
@@ -102,7 +103,17 @@ Elections Division
 provides assistance and advice to election officials on the proper conduct of elections. This includes hosting seminars and elections schools, providing calendars, ballot certification, primary election funding, and legal interpretations of election laws to election officials. We also provide assistance to the general public on voter registration and other election issues through our 1-800 toll-free number, 1-800-252-VOTE (8683), and
 via the Internet
 .
-Voters
+Use VoteTexas.gov to learn more about
+Registering to Vote
+,
+Voter ID
+,
+Ballot by Mail
+,
+What's on the Ballot
+, and even
+Where to Vote
+!
 Candidates
 Election Officials
 Voting Technology
