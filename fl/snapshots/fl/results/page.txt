@@ -1,12 +1,13 @@
 Florida Election Watch - Home Page
-2026 Primary Election
-August 18, 2026
-Official Election Results
+2026 General Election
+November 3, 2026
+Unofficial Election Night Results
 MENU
 Home
 Election Day Turnout
 County Reporting Status
 FAQs
+Legislative Projections
 Timeline
 Track By County
 Select County
@@ -82,13 +83,18 @@ U.S. Senator
 U.S. Representative
 State Offices
 Governor
+Attorney General
 Chief Financial Officer
 Commissioner of Agriculture
 Multi-County or District Offices
 State Senate
 State Representative
+Special Districts
 Judicial Offices
+Supreme Court
+District Court of Appeal
 Circuit Court
+Amendments
 Downloads
 Home Page
 (
