@@ -16,6 +16,7 @@ on:
   schedule:
     - cron: "30 8 * * *"     # daily baseline, 08:30 UTC
     - cron: "30 */3 * * *"   # election-window cadence, every 3 hours (gated)
+    - cron: "53 * * * *"     # election-night cadence, hourly (gated)
 
 # Shared with snapshot-fl.yml ON PURPOSE. Both workflows commit and push to the
 # same branch, so they must never run at once; queueing costs a few minutes and
@@ -35,14 +36,16 @@ jobs:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event.schedule == '30 8 * * *' ||
-      github.event.schedule == '30 */3 * * *'
+      github.event.schedule == '30 */3 * * *' ||
+      github.event.schedule == '53 * * * *'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: fl
     # Six targets. The cap is generous against the worst case of every one
-    # escalating to a headless render.
-    timeout-minutes: 20
+    # escalating to a headless render, and fits the run plus two resumes at the
+    # 6-minute run deadline each.
+    timeout-minutes: 30
     steps:
       - name: Decide whether this run captures
         id: gate
@@ -69,13 +72,31 @@ jobs:
           WINDOW_START=20261020
           WINDOW_END=20261117
 
+          # Election-night window, UTC hours, start inclusive, end exclusive. The
+          # 3-hourly cron fires about 5 times a day in practice (GitHub drops and
+          # delays scheduled runs) and its worst gap is the 04:00-11:00 UTC stretch,
+          # which on Nov 3-4 is results night. The hourly cron only captures inside
+          # this window, from polls opening on Nov 3 to midday Nov 5. It is offset
+          # from the hour because on-the-hour schedules are the ones GitHub sheds.
+          # Overlapping firings queue in the concurrency group; a newer one replaces
+          # an older pending one, so a slow run is followed by exactly one more.
+          NIGHT_START=2026110312
+          NIGHT_END=2026110512
+
           today=$(date -u +%Y%m%d)
+          hour=$(date -u +%Y%m%d%H)
           go=false
 
           if [ "$EVENT" = "workflow_dispatch" ]; then
             go=true; why="manual dispatch"
           elif [ "$SCHEDULE" = "30 8 * * *" ]; then
             go=true; why="daily baseline"
+          elif [ "$SCHEDULE" = "53 * * * *" ]; then
+            if [ "$hour" -ge "$NIGHT_START" ] && [ "$hour" -lt "$NIGHT_END" ]; then
+              go=true; why="inside election-night window ${NIGHT_START}..${NIGHT_END}"
+            else
+              why="skipped: hourly cron outside election-night window ${NIGHT_START}..${NIGHT_END}"
+            fi
           elif [ "${ELECTION_WINDOW:-}" = "true" ]; then
             go=true; why="ELECTION_WINDOW_FL=true (manual override)"
           elif [ "$today" -ge "$WINDOW_START" ] && [ "$today" -le "$WINDOW_END" ]; then
@@ -117,7 +138,16 @@ jobs:
       # If the run died part-way (flaky site, network blip), pick up where it
       # left off rather than refetching everything.
       - name: Resume once if the run failed
+        id: resume1
         if: failure() && steps.gate.outputs.go == 'true'
+        run: python scripts/snapshot.py --resume
+
+      # A resume that also hits the run deadline exits non-zero with its
+      # checkpoint intact, so one more pass finishes the tail. Without it the
+      # slowest targets keep a stale snapshot whenever county sites are slow,
+      # which is exactly when they matter.
+      - name: Resume again if the first resume also hit its deadline
+        if: failure() && steps.resume1.outcome == 'failure' && steps.gate.outputs.go == 'true'
         run: python scripts/snapshot.py --resume
 
       # Rebase before pushing: the concurrency group serializes the two state
