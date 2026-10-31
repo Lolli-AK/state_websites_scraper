@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://floridaelectionwatch.gov/"
   ],
-  "http_status": 200,
-  "content_type": "text/html; charset=utf-8",
-  "render_mode": "plain",
+  "http_status": 403,
+  "content_type": "text/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": true,
-  "fetched_at": "2026-10-31T06:08:14Z",
-  "html_sha256": "4dcef31c5ac69bce743be53e2912b16b132aa771f78e84553bee369fcabb47d4",
-  "text_sha256": "cf5b7de144aafb7379decefd8f331b96b7f015c30080a0c599c0a5a4c2a4bc61",
-  "byte_size": 19332,
-  "title": "Florida Election Watch - Home Page",
+  "fetched_at": "2026-10-31T12:57:24Z",
+  "html_sha256": "6ad9bf7c6cd7be66da25851cc4d77ddb59e7924fd9e6c97a4f16f33e91ea65f9",
+  "text_sha256": "bdde431bdeca0a4a55da8cf990d34d9dc04c39684a0cded3b8af71f187e1f0b4",
+  "byte_size": 2870,
+  "title": "Just a moment...",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
@@ -25,5 +25,5 @@
     "terms": [],
     "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }

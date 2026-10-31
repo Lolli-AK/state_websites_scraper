@@ -6,27 +6,24 @@
   "redirect_chain": [
     "https://dos.fl.gov/elections/for-voters/voter-registration/register-to-vote-or-update-your-information/"
   ],
-  "http_status": 200,
-  "content_type": "text/html; charset=utf-8",
-  "render_mode": "plain",
+  "http_status": 403,
+  "content_type": "text/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": false,
-  "fetched_at": "2026-10-31T06:08:14Z",
-  "html_sha256": "a5453709d4ea42a84e17ba59745dddacc4393d7e0b1c9ad1df7a4d8871c16ea1",
-  "text_sha256": "9d546c3ab140d8984ce6caeb8bca8c9d253f79351c039b6d8d8b2f9fb4046b62",
-  "byte_size": 26807,
-  "title": "Register to Vote or Update your Information - Division of Elections - Florida Department of State",
+  "fetched_at": "2026-10-31T12:57:24Z",
+  "html_sha256": "eb67657e195b8b37a8ae9aee2b57340ed616764a40043a3a0565c2cb113c0bdb",
+  "text_sha256": "53108787e9c357991eaa3d22442ce07364afaa05abd65ae9c3e5e253b959811c",
+  "byte_size": 2828,
+  "title": "Just a moment...",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
   "uocava": {
-    "present": true,
-    "terms": [
-      "uocava_form",
-      "military_overseas_voter"
-    ],
-    "count": 4
+    "present": false,
+    "terms": [],
+    "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }
