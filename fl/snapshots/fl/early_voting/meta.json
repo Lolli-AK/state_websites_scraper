@@ -2,28 +2,31 @@
   "state": "FL",
   "page_type": "early_voting",
   "requested_url": "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
-  "final_url": "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
+  "final_url": "https://dos.fl.gov/elections/for-voters/voting/early-voting-and-secure-ballot-intake-stations/",
   "redirect_chain": [
-    "https://dos.fl.gov/elections/for-voters/voting/early-voting/"
+    "https://dos.fl.gov/elections/for-voters/voting/early-voting/",
+    "https://dos.fl.gov/elections/for-voters/voting/early-voting-and-secure-ballot-intake-stations/"
   ],
-  "http_status": 403,
-  "content_type": "text/html; charset=UTF-8",
-  "render_mode": "headless",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "render_mode": "plain",
   "external": false,
-  "fetched_at": "2026-10-31T12:57:24Z",
-  "html_sha256": "2403302bc66a896d17215220cd19aa0c93c804e1c920cb4f9b1921179a25a619",
-  "text_sha256": "c651ac06cbabf164498a17e7955d0aeba44c9b0de7b2de83154f7752c360ebd1",
-  "byte_size": 2828,
-  "title": "Just a moment...",
+  "fetched_at": "2026-10-31T14:40:24Z",
+  "html_sha256": "914760e0c1605eef89d22b231b7e75bd983b6ea0f2bfe7633a68930e84b4fb77",
+  "text_sha256": "6b5e68d4b6b3a412ea2bef3c1007ec1cc3b401cf1383a13d0e77176b1f975c63",
+  "byte_size": 22721,
+  "title": "Early Voting and Secure Ballot Intake Stations - Division of Elections - Florida Department of State",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
   "uocava": {
-    "present": false,
-    "terms": [],
-    "count": 0
+    "present": true,
+    "terms": [
+      "military_overseas_voter"
+    ],
+    "count": 1
   },
-  "error": "bot_challenge_not_cleared: captured security-check page, not content"
+  "error": null
 }

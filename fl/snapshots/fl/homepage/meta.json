@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://dos.fl.gov/elections/"
   ],
-  "http_status": 403,
-  "content_type": "text/html; charset=UTF-8",
-  "render_mode": "headless",
+  "http_status": 200,
+  "content_type": "text/html; charset=utf-8",
+  "render_mode": "plain",
   "external": false,
-  "fetched_at": "2026-10-31T12:57:24Z",
-  "html_sha256": "e686498561fa8e4c93b2a208cca319dd4058660af55eab18f86ee04f5affecf7",
-  "text_sha256": "1e11eab1a5b1c73ba18413cb84402f679b15eff96718dfebcaefe0247bac0068",
-  "byte_size": 2828,
-  "title": "Just a moment...",
+  "fetched_at": "2026-10-31T14:40:24Z",
+  "html_sha256": "db1eb86de1f11384d648a43d6b34376ce28e0b498a5c8e4e1ac56aa57398daa7",
+  "text_sha256": "82b855b9992578059ae504a7cef0c22c4a9f7decab5f6a716548cd42f46f5845",
+  "byte_size": 27418,
+  "title": "Division of Elections - Florida Department of State",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
@@ -25,5 +25,5 @@
     "terms": [],
     "count": 0
   },
-  "error": "bot_challenge_not_cleared: captured security-check page, not content"
+  "error": null
 }
