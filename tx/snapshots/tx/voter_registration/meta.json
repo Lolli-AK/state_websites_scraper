@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.votetexas.gov/register-to-vote/index.html"
   ],
-  "http_status": 403,
+  "http_status": 200,
   "content_type": "text/html",
   "render_mode": "plain",
   "external": true,
-  "fetched_at": "2026-11-04T08:56:02Z",
-  "html_sha256": "b0ab30ece3d0a05e05a897d99574c36e15fe911a6f112bf784d0cb9a2864f2f1",
-  "text_sha256": "a310f9d20c9036df633918e3ce961ef88f388bcf638c6d505c1d764039bc6663",
-  "byte_size": 981,
-  "title": "ERROR: The request could not be satisfied",
+  "fetched_at": "2026-11-04T09:32:59Z",
+  "html_sha256": "fcb8c507b2ae074142aed25c7c0716b3b3b5b21100ff0da80e2ba43c7e373dbc",
+  "text_sha256": "7e55190843c387ae69888a83eaa6992e3cbbe0ff4ce9ef81baab441e56d8dcd9",
+  "byte_size": 7476,
+  "title": "Register to Vote in Texas | VoteTexas.gov",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
