@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.votetexas.gov/voting/where.html"
   ],
-  "http_status": 403,
+  "http_status": 200,
   "content_type": "text/html",
   "render_mode": "plain",
   "external": true,
-  "fetched_at": "2026-11-05T09:05:00Z",
-  "html_sha256": "aca42006cf4bd731e574e1be05a0481341e4ce47ed37af0ef79cbf6b3184c7ed",
-  "text_sha256": "c41bc4af01be8642f10fa147e2e23155f587a9ec17d0092105a7b6a85cf02a8d",
-  "byte_size": 981,
-  "title": "ERROR: The request could not be satisfied",
+  "fetched_at": "2026-11-05T10:05:32Z",
+  "html_sha256": "3294ffcc7a4773b6a5b731449519734ca6791a1281d16873ff6472f3579f5fd7",
+  "text_sha256": "f44939afce1f09c68c3585e9c37374c4dfc86c9a4894d2aa2b98e2426b0da1d8",
+  "byte_size": 10408,
+  "title": "Find Your Polling Place in Texas | VoteTexas.gov",
   "noncitizen_voting": {
     "present": false,
     "terms": [],

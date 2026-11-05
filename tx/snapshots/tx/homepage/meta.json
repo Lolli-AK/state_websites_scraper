@@ -6,26 +6,24 @@
   "redirect_chain": [
     "https://www.sos.state.tx.us/elections/index.shtml"
   ],
-  "http_status": 403,
-  "content_type": "text/html; charset=utf-8",
+  "http_status": 200,
+  "content_type": "text/html",
   "render_mode": "plain",
   "external": false,
-  "fetched_at": "2026-11-05T09:05:00Z",
-  "html_sha256": "e78ed24d8c0fc487189c427afc7d015fb5bd3f3ba02a367d05c0f553c6f4f82b",
-  "text_sha256": "7dc5dbdb817a82efd7bef051556864a09c183ca0105301955477700beef9b447",
-  "byte_size": 18905,
-  "title": "Sorry, but the requested file was not found",
+  "fetched_at": "2026-11-05T10:05:32Z",
+  "html_sha256": "712071c985404869e15c2962a9272f6a87301b20128eb90400457d3503addc6d",
+  "text_sha256": "aea53ed517e3d82998429a169d37425845729e5f019b20328fdbef31822dcc6a",
+  "byte_size": 21835,
+  "title": "Welcome to Texas Elections",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
   "uocava": {
-    "present": true,
-    "terms": [
-      "military_overseas_voter"
-    ],
-    "count": 1
+    "present": false,
+    "terms": [],
+    "count": 0
   },
   "error": null
 }

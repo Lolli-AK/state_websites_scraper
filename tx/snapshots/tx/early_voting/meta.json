@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.votetexas.gov/voting/early-voting.html"
   ],
-  "http_status": 403,
+  "http_status": 200,
   "content_type": "text/html",
   "render_mode": "plain",
   "external": true,
-  "fetched_at": "2026-11-05T09:05:00Z",
-  "html_sha256": "99dce462468428bfb1cf859a81f8a681b922192b365004c3cb9379f0383fab10",
-  "text_sha256": "e75f0ddffc76d368955dee04e297a39de7e06b490d02eb378af31667dda9fc98",
-  "byte_size": 981,
-  "title": "ERROR: The request could not be satisfied",
+  "fetched_at": "2026-11-05T10:05:32Z",
+  "html_sha256": "87ff7cd7379614ea27fa21a31e5eff5310752ab90cd33ab7e7d45aa5f9062470",
+  "text_sha256": "0a902ef4f0bebaa5e48c1764e86c91f7bf7283620bf53db8e62468698e274b6b",
+  "byte_size": 7053,
+  "title": "Early Voting In Person in Texas | VoteTexas.gov",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
