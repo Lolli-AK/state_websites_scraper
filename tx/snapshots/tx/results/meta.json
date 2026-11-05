@@ -6,24 +6,26 @@
   "redirect_chain": [
     "https://www.sos.state.tx.us/elections/historical/index.shtml"
   ],
-  "http_status": 200,
-  "content_type": "text/html",
+  "http_status": 403,
+  "content_type": "text/html; charset=utf-8",
   "render_mode": "plain",
   "external": false,
-  "fetched_at": "2026-11-05T10:05:32Z",
-  "html_sha256": "70c41ececddf55204d643f44fd32c345e575c7ab978fa9300e667c2e21806142",
-  "text_sha256": "0430c8ad83c3bf1e889da4696e381e7ac927c07e6ad5bca2438661b9c49b9866",
-  "byte_size": 18591,
-  "title": "Election Results/Data",
+  "fetched_at": "2026-11-05T11:05:18Z",
+  "html_sha256": "e78ed24d8c0fc487189c427afc7d015fb5bd3f3ba02a367d05c0f553c6f4f82b",
+  "text_sha256": "7dc5dbdb817a82efd7bef051556864a09c183ca0105301955477700beef9b447",
+  "byte_size": 18905,
+  "title": "Sorry, but the requested file was not found",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
   "uocava": {
-    "present": false,
-    "terms": [],
-    "count": 0
+    "present": true,
+    "terms": [
+      "military_overseas_voter"
+    ],
+    "count": 1
   },
   "error": null
 }
