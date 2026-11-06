@@ -10,9 +10,9 @@
   "content_type": "text/html",
   "render_mode": "plain",
   "external": true,
-  "fetched_at": "2026-11-06T16:02:59Z",
-  "html_sha256": "21e4db5a658ac7900fcfcf4badb00677e881424129cb478c2ac8f61cd951538e",
-  "text_sha256": "91bbb6891b277853469acbccac1ab32762fe94da27b1ec42c0654339dfd6ca39",
+  "fetched_at": "2026-11-06T16:53:19Z",
+  "html_sha256": "5dcd3bc30bff45c39ffced36db182acbd200e1673d566a78250b12e46187b831",
+  "text_sha256": "854c065e2b69ffbc83b8f5969fdb4cec7889ae33c1bef79826ec8439a431dd40",
   "byte_size": 981,
   "title": "ERROR: The request could not be satisfied",
   "noncitizen_voting": {
