@@ -10,9 +10,9 @@
   "content_type": "text/html; charset=utf-8",
   "render_mode": "plain",
   "external": true,
-  "fetched_at": "2026-11-13T11:24:45Z",
-  "html_sha256": "a436cc7036c1d05b555f9975ad0fa539df97c3be2777b251e1b92542260dcd05",
-  "text_sha256": "d58df7dd1d982d98940e8f5d83e3a0994e296200b9e907b5f5c03f5fdf05360d",
+  "fetched_at": "2026-11-13T16:40:25Z",
+  "html_sha256": "b071586fc1ada1d80effbf0c3ed811c5244ab71cb037af738b53e81ca837204d",
+  "text_sha256": "45e6b6808ac2c6e6fe194c99115218465cdbe94305aba59a293ae60c1846d4d6",
   "byte_size": 19235,
   "title": "Florida Election Watch - Home Page",
   "noncitizen_voting": {
