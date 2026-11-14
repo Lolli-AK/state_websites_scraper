@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.votetexas.gov/voting/where.html"
   ],
-  "http_status": 403,
-  "content_type": "text/html",
-  "render_mode": "plain",
+  "http_status": 405,
+  "content_type": "text/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": true,
-  "fetched_at": "2026-11-13T19:31:33Z",
-  "html_sha256": "92fa9f5d9c5a1963e56af5aba8a2cd784e7854cf50fe3e11957738e71f9bb04b",
-  "text_sha256": "2772c3c5b9e9e5036633c28d9faf8ff314f966f8ff5f7ec1ea4bfa1c6a808389",
-  "byte_size": 981,
-  "title": "ERROR: The request could not be satisfied",
+  "fetched_at": "2026-11-14T01:23:31Z",
+  "html_sha256": "fc02b47128f26b7d053448422440cad754b16060b515428eb5c22c3a6ecbfbdc",
+  "text_sha256": "1e937dab267c1ddbbabd96c355f82e725a29a24aeed9743d74a1a263840d23bc",
+  "byte_size": 4608,
+  "title": "Let's confirm you are human",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
@@ -25,5 +25,5 @@
     "terms": [],
     "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }

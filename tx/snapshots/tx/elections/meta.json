@@ -6,26 +6,24 @@
   "redirect_chain": [
     "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml"
   ],
-  "http_status": 403,
-  "content_type": "text/html; charset=utf-8",
-  "render_mode": "plain",
+  "http_status": 405,
+  "content_type": "text/html\ntext/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": false,
-  "fetched_at": "2026-11-13T19:31:33Z",
-  "html_sha256": "db9ab9d2431d386f83d1c433bdd0c6e83fd49b190de96ba7720f8143a625821d",
-  "text_sha256": "7959fa8edad1e365267332350926d8c49e812aa11f6c3b3e040fbb0e4ebabb49",
-  "byte_size": 18665,
-  "title": "Sorry, but the requested file was not found",
+  "fetched_at": "2026-11-14T01:23:31Z",
+  "html_sha256": "fc02b47128f26b7d053448422440cad754b16060b515428eb5c22c3a6ecbfbdc",
+  "text_sha256": "1e937dab267c1ddbbabd96c355f82e725a29a24aeed9743d74a1a263840d23bc",
+  "byte_size": 4608,
+  "title": "Let's confirm you are human",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
   "uocava": {
-    "present": true,
-    "terms": [
-      "military_overseas_voter"
-    ],
-    "count": 1
+    "present": false,
+    "terms": [],
+    "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }
