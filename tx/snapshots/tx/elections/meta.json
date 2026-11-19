@@ -6,24 +6,27 @@
   "redirect_chain": [
     "https://www.sos.state.tx.us/elections/voter/important-election-dates.shtml"
   ],
-  "http_status": 405,
-  "content_type": "text/html\ntext/html; charset=UTF-8",
-  "render_mode": "headless",
+  "http_status": 200,
+  "content_type": "text/html",
+  "render_mode": "plain",
   "external": false,
-  "fetched_at": "2026-11-18T17:09:28Z",
-  "html_sha256": "fc02b47128f26b7d053448422440cad754b16060b515428eb5c22c3a6ecbfbdc",
-  "text_sha256": "1e937dab267c1ddbbabd96c355f82e725a29a24aeed9743d74a1a263840d23bc",
-  "byte_size": 4608,
-  "title": "Let's confirm you are human",
+  "fetched_at": "2026-11-19T17:17:39Z",
+  "html_sha256": "1a70431f9bf2f9798582ca5dbdb18a70a4d762fd267d5253a3b3ebf57502d647",
+  "text_sha256": "685d04d9c1d079e7a847ed03805befdfa5f5b006fa960b4b05f4358711d5572a",
+  "byte_size": 69865,
+  "title": "Important Election Dates",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
     "count": 0
   },
   "uocava": {
-    "present": false,
-    "terms": [],
-    "count": 0
+    "present": true,
+    "terms": [
+      "uocava_form",
+      "military_overseas_voter"
+    ],
+    "count": 50
   },
-  "error": "bot_challenge_not_cleared: captured security-check page, not content"
+  "error": null
 }

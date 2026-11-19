@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.sos.state.tx.us/elections/index.shtml"
   ],
-  "http_status": 405,
-  "content_type": "text/html\ntext/html; charset=UTF-8",
-  "render_mode": "headless",
+  "http_status": 200,
+  "content_type": "text/html",
+  "render_mode": "plain",
   "external": false,
-  "fetched_at": "2026-11-18T17:09:28Z",
-  "html_sha256": "fc02b47128f26b7d053448422440cad754b16060b515428eb5c22c3a6ecbfbdc",
-  "text_sha256": "1e937dab267c1ddbbabd96c355f82e725a29a24aeed9743d74a1a263840d23bc",
-  "byte_size": 4608,
-  "title": "Let's confirm you are human",
+  "fetched_at": "2026-11-19T17:17:39Z",
+  "html_sha256": "998ec69b57e1d3eec8df6d09069fa224e73e47bd4b79746c313238adc3312961",
+  "text_sha256": "238a894fe2823298a32965ae69c4a44321db86b421ab37c0d93be977b3838d65",
+  "byte_size": 21587,
+  "title": "Welcome to Texas Elections",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
@@ -25,5 +25,5 @@
     "terms": [],
     "count": 0
   },
-  "error": "bot_challenge_not_cleared: captured security-check page, not content"
+  "error": null
 }
