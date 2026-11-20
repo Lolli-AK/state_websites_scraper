@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.votetexas.gov/voting/where.html"
   ],
-  "http_status": 200,
-  "content_type": "text/html",
-  "render_mode": "plain",
+  "http_status": 405,
+  "content_type": "text/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": true,
-  "fetched_at": "2026-11-19T17:17:39Z",
-  "html_sha256": "3294ffcc7a4773b6a5b731449519734ca6791a1281d16873ff6472f3579f5fd7",
-  "text_sha256": "f44939afce1f09c68c3585e9c37374c4dfc86c9a4894d2aa2b98e2426b0da1d8",
-  "byte_size": 10408,
-  "title": "Find Your Polling Place in Texas | VoteTexas.gov",
+  "fetched_at": "2026-11-20T16:54:25Z",
+  "html_sha256": "9b8cc37198fca44e58df375e09d2d03f61a6127145db6d70fb1c4ee630dbb501",
+  "text_sha256": "1e937dab267c1ddbbabd96c355f82e725a29a24aeed9743d74a1a263840d23bc",
+  "byte_size": 4632,
+  "title": "Let's confirm you are human",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
@@ -25,5 +25,5 @@
     "terms": [],
     "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }

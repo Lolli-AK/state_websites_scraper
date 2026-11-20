@@ -6,15 +6,15 @@
   "redirect_chain": [
     "https://www.sos.state.tx.us/elections/historical/index.shtml"
   ],
-  "http_status": 200,
-  "content_type": "text/html",
-  "render_mode": "plain",
+  "http_status": 405,
+  "content_type": "text/html\ntext/html; charset=UTF-8",
+  "render_mode": "headless",
   "external": false,
-  "fetched_at": "2026-11-19T17:17:39Z",
-  "html_sha256": "509f04be5ceea91eb7c9ce1c4ba757e910323d00c34a0040f282c4e6540a278f",
-  "text_sha256": "1ecc761b259864bf69ad6c830873952f08555d062a42e971481bec12a76058ed",
-  "byte_size": 18343,
-  "title": "Election Results/Data",
+  "fetched_at": "2026-11-20T16:54:25Z",
+  "html_sha256": "9b8cc37198fca44e58df375e09d2d03f61a6127145db6d70fb1c4ee630dbb501",
+  "text_sha256": "1e937dab267c1ddbbabd96c355f82e725a29a24aeed9743d74a1a263840d23bc",
+  "byte_size": 4632,
+  "title": "Let's confirm you are human",
   "noncitizen_voting": {
     "present": false,
     "terms": [],
@@ -25,5 +25,5 @@
     "terms": [],
     "count": 0
   },
-  "error": null
+  "error": "bot_challenge_not_cleared: captured security-check page, not content"
 }
